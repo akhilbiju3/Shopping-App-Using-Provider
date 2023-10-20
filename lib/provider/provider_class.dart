@@ -16,11 +16,22 @@ class ShopProvider extends ChangeNotifier {
   }
 
   void additem(ShopModelClass items) {
-    itemList.add(items);
-    notifyListeners();
+    bool isDuplicate =
+        itemList.any((existingItem) => existingItem.pName == items.pName);
+        
+    if (isDuplicate) {
+      ShopModelClass existingItem = itemList.firstWhere((existingitem) => existingitem.pName == items.pName);
+      existingItem.pQuantity++;
+      print("Item already added");
+    } else {
+      print("Item going to be added");
+      itemList.add(items);
+      notifyListeners();
+    }
   }
+
   void deleteitem(int index) {
-  itemList.removeAt(index);
-  notifyListeners();
+    itemList.removeAt(index);
+    notifyListeners();
   }
 }

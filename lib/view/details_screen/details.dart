@@ -161,9 +161,10 @@ class _DetailscreenState extends State<Detailscreen> {
                           pName: names[widget.imageIndex],
                           pImage: gridImages[widget.imageIndex],
                           pPrice: "₹${counter.current_Index * widget.item}",
-                          pQuantity: "${counter.current_Index}"));
+                          pQuantity: counter.current_Index));
                           
                     },
+                    
                     child: Container(
                       height: 50,
                       width: 200,

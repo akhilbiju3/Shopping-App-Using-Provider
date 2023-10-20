@@ -13,13 +13,15 @@ class CartScreenWidget extends StatefulWidget {
       required this.productName,
       required this.productPrice,
       required this.productQuantity,
-      required this.productImage, required this.index});
+      required this.productImage,
+      required this.index});
 
   @override
   State<CartScreenWidget> createState() => _CartScreenWidgetState();
 }
 
 class _CartScreenWidgetState extends State<CartScreenWidget> {
+
   @override
   Widget build(BuildContext context) {
     final counter = Provider.of<ShopProvider>(context);
@@ -107,8 +109,10 @@ class _CartScreenWidgetState extends State<CartScreenWidget> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         InkWell(
-                          onTap:(){counter.deleteitem(widget.index);},
-                          child: Icon(Icons.delete)),
+                            onTap: () {
+                              counter.deleteitem(widget.index);
+                            },
+                            child: Icon(Icons.delete)),
                         SizedBox(
                           width: 10,
                         ),

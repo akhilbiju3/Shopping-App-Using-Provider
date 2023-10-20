@@ -2,7 +2,7 @@ class ShopModelClass {
   final String pName;
   final String pImage;
   final String pPrice;
-  final String pQuantity;
+  int pQuantity;
 
   ShopModelClass({
     required this.pName,

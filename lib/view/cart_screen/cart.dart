@@ -10,11 +10,10 @@ class Cartscreen extends StatefulWidget {
   State<Cartscreen> createState() => _CartscreenState();
 }
 
-
-
 class _CartscreenState extends State<Cartscreen> {
   @override
   Widget build(BuildContext context) {
+    final cartScreenProvider = Provider.of<ShopProvider>(context);
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -34,23 +33,18 @@ class _CartscreenState extends State<Cartscreen> {
             )),
       ),
       body: ListView.separated(
-          itemBuilder: (context, index) => CartScreenWidget(
-                productName: Provider.of<ShopProvider>(context, )
-                    .itemList[index]
-                    .pName,
-                productPrice: Provider.of<ShopProvider>(context, )
-                    .itemList[index]
-                    .pPrice,
-                productImage: Provider.of<ShopProvider>(context, )
-                    .itemList[index]
-                    .pImage,
-                productQuantity:
-                    Provider.of<ShopProvider>(context, )
-                        .itemList[index]
-                        .pQuantity, index: index,
-              ),
+          itemBuilder: (context, index) {
+            
+            return CartScreenWidget(
+                productName: cartScreenProvider.itemList[index].pName,
+                productPrice: cartScreenProvider.itemList[index].pPrice,
+                productImage: cartScreenProvider.itemList[index].pImage,
+                productQuantity: cartScreenProvider.itemList[index].pQuantity.toString(),
+                index: index,
+              );
+          } ,
           separatorBuilder: (context, index) => const Divider(),
-          itemCount: Provider.of<ShopProvider>(context).itemList.length),
+          itemCount: cartScreenProvider.itemList.length),
     );
   }
 }
