@@ -70,7 +70,7 @@ class _CartScreenWidgetState extends State<CartScreenWidget> {
                     children: [
                       InkWell(
                         onTap: () {
-                          counter.decrement();
+                          counter.decrementItemQuantity(widget.index);
                         },
                         child: Icon(
                           Icons.remove_circle,
@@ -93,7 +93,7 @@ class _CartScreenWidgetState extends State<CartScreenWidget> {
                       ),
                       InkWell(
                         onTap: () {
-                          counter.increment();
+                          counter.incrementItemQuantity(widget.index);
                         },
                         child: Icon(Icons.add_circle,
                             color: Colors.black, size: 27),

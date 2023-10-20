@@ -34,4 +34,23 @@ class ShopProvider extends ChangeNotifier {
     itemList.removeAt(index);
     notifyListeners();
   }
+  void incrementItemQuantity(int index) {
+  if (index >= 0 && index < itemList.length) {
+    itemList[index].pQuantity++;
+    notifyListeners();
+  }
+}
+
+void decrementItemQuantity(int index) {
+  if (index >= 0 && index < itemList.length) {
+    itemList[index].pQuantity--;
+    if (itemList[index].pQuantity <= 0) {
+      itemList.removeAt(index); // Remove the item if quantity is zero or negative.
+    }
+    notifyListeners();
+  }
+}
+
+
+  
 }
